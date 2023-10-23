@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Task_company.Models.vegerables_tbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<head>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	@if (TempData["message"] != null)
+	{
+		<script type="text/javascript">
+
+                        var message = '@TempData["message"]';
+                        Swal.fire("Good job!", message, "success");
+		</script>
+	}
+
+	@if (TempData["Delete"] != null)
+	{
+		<script type="text/javascript">
+
+                        var message = '@TempData["Delete"]';
+                        Swal.fire("Good job!", message, "warning");
+
+		</script>
+	}
+</head>
+<style>
+    .main{
+        background-color:black;
+       
+    }
+
+    .top{
+        padding-left:255px;
+    }
+
+</style>
+
+
+
+<div class="main">
+
+    <div class="top text-white">
+        <br>
+        <h2 class="text-center">VERGITABLE</h2>
+        <p>
+            <br />
+            <button type="button" class="bg-fuchsia">@Html.ActionLink("Create New", "Create")</button>
+
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.veg_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fruits_tbl1.Fruit_name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.veg_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fruits_tbl1.Fruit_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.veg_Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.veg_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.veg_Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

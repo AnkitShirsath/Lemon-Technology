@@ -1,0 +1,59 @@
+﻿@model Task_company.Models.vegerables_tbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+<style>
+    .main{
+        background-color:black;
+
+    }
+
+    .top{
+        padding-left:700px;
+    }
+</style>
+
+
+<div class="main">
+    <h3 class="text-center text-white">Are you sure you want to delete this?</h3>
+    <br />
+    <div class="top text-white">
+
+
+        <br />
+
+        <h4>Vegitable Table</h4>
+        <br />
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.veg_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.veg_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.fruits_tbl1.Fruit_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fruits_tbl1.Fruit_name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <br />
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

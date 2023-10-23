@@ -1,0 +1,47 @@
+﻿@model Task_company.Models.vegerables_tbl
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .main{
+        background-color:black;
+        
+    }
+
+	.top {
+		padding-left: 700px;
+	}
+</style>
+
+
+<div class="main">
+    <div class="top text-white">
+        <h4> Details Vegitable</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Vegitable Name :</label>
+                @*@Html.DisplayNameFor(model => model.veg_Name)*@
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.veg_Name)
+            </dd>
+
+            <dt>
+                <label>Fruit Table :</label>
+                @*@Html.DisplayNameFor(model => model.fruits_tbl1.Fruit_name)*@
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.fruits_tbl1.Fruit_name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.veg_Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

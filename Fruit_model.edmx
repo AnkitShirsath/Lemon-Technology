@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Ankit_TaskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="comman_fruit_veg">
+          <Key>
+            <PropertyRef Name="fv" />
+          </Key>
+          <Property Name="fv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fruit_id" Type="int" />
+          <Property Name="veg_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="fruits_tbl">
+          <Key>
+            <PropertyRef Name="Fruit_id" />
+          </Key>
+          <Property Name="Fruit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fruit_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="veg_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="vegerables_tbl">
+          <Key>
+            <PropertyRef Name="veg_Id" />
+          </Key>
+          <Property Name="veg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="veg_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Fruit_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__comman_fr__Fruit__5165187F">
+          <End Role="fruits_tbl" Type="Self.fruits_tbl" Multiplicity="0..1" />
+          <End Role="comman_fruit_veg" Type="Self.comman_fruit_veg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fruits_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="comman_fruit_veg">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__comman_fr__veg_I__52593CB8">
+          <End Role="vegerables_tbl" Type="Self.vegerables_tbl" Multiplicity="0..1" />
+          <End Role="comman_fruit_veg" Type="Self.comman_fruit_veg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vegerables_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Principal>
+            <Dependent Role="comman_fruit_veg">
+              <PropertyRef Name="veg_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__vegerable__Fruit__4E88ABD4">
+          <End Role="fruits_tbl" Type="Self.fruits_tbl" Multiplicity="0..1" />
+          <End Role="vegerables_tbl" Type="Self.vegerables_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fruits_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="vegerables_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fruits_tbl_vegerables_tbl_veg_Id">
+          <End Role="vegerables_tbl" Type="Self.vegerables_tbl" Multiplicity="0..1" />
+          <End Role="fruits_tbl" Type="Self.fruits_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vegerables_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Principal>
+            <Dependent Role="fruits_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Ankit_TaskModelStoreContainer">
+          <EntitySet Name="comman_fruit_veg" EntityType="Self.comman_fruit_veg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fruits_tbl" EntityType="Self.fruits_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vegerables_tbl" EntityType="Self.vegerables_tbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__comman_fr__Fruit__5165187F" Association="Self.FK__comman_fr__Fruit__5165187F">
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+            <End Role="comman_fruit_veg" EntitySet="comman_fruit_veg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__comman_fr__veg_I__52593CB8" Association="Self.FK__comman_fr__veg_I__52593CB8">
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+            <End Role="comman_fruit_veg" EntitySet="comman_fruit_veg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__vegerable__Fruit__4E88ABD4" Association="Self.FK__vegerable__Fruit__4E88ABD4">
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fruits_tbl_vegerables_tbl_veg_Id" Association="Self.FK_fruits_tbl_vegerables_tbl_veg_Id">
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Ankit_TaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="fruits_tbl">
+          <Key>
+            <PropertyRef Name="Fruit_id" />
+          </Key>
+          <Property Name="Fruit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fruit_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="veg_Id" Type="Int32" />
+          <NavigationProperty Name="vegerables_tbl" Relationship="Self.FK_fruits_tbl_vegerables_tbl_veg_Id" FromRole="fruits_tbl" ToRole="vegerables_tbl" />
+          <NavigationProperty Name="comman_fruit_veg" Relationship="Ankit_TaskModel.FK__comman_fr__Fruit__5165187F" FromRole="fruits_tbl" ToRole="comman_fruit_veg" />
+          <NavigationProperty Name="vegerables_tbl1" Relationship="Ankit_TaskModel.FK__vegerable__Fruit__4E88ABD4" FromRole="fruits_tbl" ToRole="vegerables_tbl" />
+        </EntityType>
+        <EntityType Name="vegerables_tbl">
+          <Key>
+            <PropertyRef Name="veg_Id" />
+          </Key>
+          <Property Name="veg_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="veg_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="fruits_tbl" Relationship="Self.FK_fruits_tbl_vegerables_tbl_veg_Id" FromRole="vegerables_tbl" ToRole="fruits_tbl" />
+          <Property Name="Fruit_id" Type="Int32" />
+          <NavigationProperty Name="comman_fruit_veg" Relationship="Ankit_TaskModel.FK__comman_fr__veg_I__52593CB8" FromRole="vegerables_tbl" ToRole="comman_fruit_veg" />
+          <NavigationProperty Name="fruits_tbl1" Relationship="Ankit_TaskModel.FK__vegerable__Fruit__4E88ABD4" FromRole="vegerables_tbl" ToRole="fruits_tbl" />
+        </EntityType>
+        <Association Name="FK_fruits_tbl_vegerables_tbl_veg_Id">
+          <End Role="vegerables_tbl" Type="Self.vegerables_tbl" Multiplicity="0..1" />
+          <End Role="fruits_tbl" Type="Self.fruits_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vegerables_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Principal>
+            <Dependent Role="fruits_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Ankit_TaskEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="fruits_tbl" EntityType="Self.fruits_tbl" />
+          <EntitySet Name="vegerables_tbl" EntityType="Self.vegerables_tbl" />
+          <AssociationSet Name="FK_fruits_tbl_vegerables_tbl_veg_Id" Association="Self.FK_fruits_tbl_vegerables_tbl_veg_Id">
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+          </AssociationSet>
+          <EntitySet Name="comman_fruit_veg" EntityType="Ankit_TaskModel.comman_fruit_veg" />
+          <AssociationSet Name="FK__comman_fr__Fruit__5165187F" Association="Ankit_TaskModel.FK__comman_fr__Fruit__5165187F">
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+            <End Role="comman_fruit_veg" EntitySet="comman_fruit_veg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__comman_fr__veg_I__52593CB8" Association="Ankit_TaskModel.FK__comman_fr__veg_I__52593CB8">
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+            <End Role="comman_fruit_veg" EntitySet="comman_fruit_veg" />
+          </AssociationSet>
+          <AssociationSet Name="FK__vegerable__Fruit__4E88ABD4" Association="Ankit_TaskModel.FK__vegerable__Fruit__4E88ABD4">
+            <End Role="fruits_tbl" EntitySet="fruits_tbl" />
+            <End Role="vegerables_tbl" EntitySet="vegerables_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="comman_fruit_veg">
+          <Key>
+            <PropertyRef Name="fv" />
+          </Key>
+          <Property Name="fv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fruit_id" Type="Int32" />
+          <Property Name="veg_Id" Type="Int32" />
+          <NavigationProperty Name="fruits_tbl" Relationship="Ankit_TaskModel.FK__comman_fr__Fruit__5165187F" FromRole="comman_fruit_veg" ToRole="fruits_tbl" />
+          <NavigationProperty Name="vegerables_tbl" Relationship="Ankit_TaskModel.FK__comman_fr__veg_I__52593CB8" FromRole="comman_fruit_veg" ToRole="vegerables_tbl" />
+        </EntityType>
+        <Association Name="FK__comman_fr__Fruit__5165187F">
+          <End Type="Ankit_TaskModel.fruits_tbl" Role="fruits_tbl" Multiplicity="0..1" />
+          <End Type="Ankit_TaskModel.comman_fruit_veg" Role="comman_fruit_veg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fruits_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="comman_fruit_veg">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__comman_fr__veg_I__52593CB8">
+          <End Type="Ankit_TaskModel.vegerables_tbl" Role="vegerables_tbl" Multiplicity="0..1" />
+          <End Type="Ankit_TaskModel.comman_fruit_veg" Role="comman_fruit_veg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vegerables_tbl">
+              <PropertyRef Name="veg_Id" />
+            </Principal>
+            <Dependent Role="comman_fruit_veg">
+              <PropertyRef Name="veg_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__vegerable__Fruit__4E88ABD4">
+          <End Type="Ankit_TaskModel.fruits_tbl" Role="fruits_tbl" Multiplicity="0..1" />
+          <End Type="Ankit_TaskModel.vegerables_tbl" Role="vegerables_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fruits_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Principal>
+            <Dependent Role="vegerables_tbl">
+              <PropertyRef Name="Fruit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Ankit_TaskModelStoreContainer" CdmEntityContainer="Ankit_TaskEntities">
+          <EntitySetMapping Name="fruits_tbl">
+            <EntityTypeMapping TypeName="Ankit_TaskModel.fruits_tbl">
+              <MappingFragment StoreEntitySet="fruits_tbl">
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+                <ScalarProperty Name="Fruit_name" ColumnName="Fruit_name" />
+                <ScalarProperty Name="veg_Id" ColumnName="veg_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vegerables_tbl">
+            <EntityTypeMapping TypeName="Ankit_TaskModel.vegerables_tbl">
+              <MappingFragment StoreEntitySet="vegerables_tbl">
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+                <ScalarProperty Name="veg_Id" ColumnName="veg_Id" />
+                <ScalarProperty Name="veg_Name" ColumnName="veg_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comman_fruit_veg">
+            <EntityTypeMapping TypeName="Ankit_TaskModel.comman_fruit_veg">
+              <MappingFragment StoreEntitySet="comman_fruit_veg">
+                <ScalarProperty Name="veg_Id" ColumnName="veg_Id" />
+                <ScalarProperty Name="Fruit_id" ColumnName="Fruit_id" />
+                <ScalarProperty Name="fv" ColumnName="fv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

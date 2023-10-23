@@ -1,0 +1,57 @@
+﻿@model Task_company.Models.vegerables_tbl
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .main{
+        background-color:black;
+
+    }
+
+    .top{
+        padding-left:300px;
+    }
+</style>
+
+<div class="main">
+    <div class="top text-white">
+
+        <h4 class="text-center text-white">Vegitable Table </h4>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label>Vegitable Name</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.veg_Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.veg_Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fruit Name</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("Fruit_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Fruit_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="bg-fuchsia value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
